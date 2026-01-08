@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const session = require("express-session");
 let app = express();
+// import Routes
+const contactRoute = require("./routes/contactRoutes");
 // Konfigurimet
 app.use(
   cors({
@@ -27,6 +29,8 @@ mongoose
   )
   .then(() => console.log("DB connected"))
   .catch((err) => console.log("Something is wrong", err));
+// Therritja e Route
+  app.use(contactRoute);
 // test server
 app.use("/", (req, res) => {
   res.send("<h1>Hello</h1>");
