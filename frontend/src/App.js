@@ -1,11 +1,13 @@
-import logo from "./logo.svg";
-import "./App.css";
 import Contact from "./Contact";
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <div>
-      <Contact />
-    </div>
+    <>
+      {<Contact />}
+      <Routes>
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ const session = require("express-session");
 let app = express();
 // import Routes
 const contactRoute = require("./routes/contactRoutes");
+const itemRoute = require("./routes/itemRoutes");
 // Konfigurimet
 app.use(
   cors({
@@ -30,7 +31,8 @@ mongoose
   .then(() => console.log("DB connected"))
   .catch((err) => console.log("Something is wrong", err));
 // Therritja e Route
-  app.use(contactRoute);
+app.use(contactRoute);
+app.use(itemRoute);
 // test server
 app.use("/", (req, res) => {
   res.send("<h1>Hello</h1>");
