@@ -6,6 +6,7 @@ let app = express();
 // import Routes
 const contactRoute = require("./routes/contactRoutes");
 const itemRoute = require("./routes/itemRoutes");
+const path = require("path")
 // Konfigurimet
 app.use(
   cors({
@@ -23,11 +24,11 @@ app.use(
   })
 );
 app.use(express.json({ limit: "1000mb", extended: true }));
+app.use("/images", express.static(path.join(__dirname, "/images")));
 // Lidhja me mongoDB
-mongoose
-  .connect(
-    "mongodb+srv://admin:123@cluster0.iwgtttr.mongodb.net/DBMERN?appName=Cluster0"
-  )
+mongoose.connect(
+  "mongodb+srv://admin:123@cluster0.utalius.mongodb.net/DBMERN?appName=Cluster0",
+)
   .then(() => console.log("DB connected"))
   .catch((err) => console.log("Something is wrong", err));
 // Therritja e Route
